@@ -1,0 +1,611 @@
+import java.io.IOException;
+import java.util.Scanner;
+ 
+public class Main {
+    
+    public static void main(String[] args) throws IOException {
+         
+        Scanner input = new Scanner(System.in);
+       
+        String vel[][] = new String[3][3];
+        String n1, n2, aux, g;
+        int cont=0, l=0, c=0, te=0;
+      
+        
+      System.out.println("Digite o nome dos jogadores:");
+      n1 = input.nextLine();
+      n2 = input.nextLine();
+      
+     // Executa enquanto [cont] for igual a ZERO.
+      while(cont == 0){
+          System.out.println(n1+", escolha a posição de sua jogada:");
+          //Se a possição for igual a NULL, imprime a numeração da Coluna
+          if (vel[l][c] == null) {
+              for ( l = 0; l < vel.length; l++) {
+                  System.out.print(l+" + + -> ");
+                  for (c = 0; c < vel.length; c++) {
+                      
+                    System.out.print(c+" | ");
+                }
+                  System.out.println();
+            }
+          }
+          //Se a posição tiver preenchida Linha e coluna, vai imprimir oque esta dentro da posição
+          else{
+              for (l = 0; l < vel.length; l++) {
+                  System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                  
+                	if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+            }
+          }
+          // Armazena Linha e Coluna
+          l = input.nextInt();
+          c = input.nextInt();
+          // Verifica se a posição ja foi utilizada
+          if(vel[l][c] != null){
+             // informa que a posição ja foi utilizada, pedindo uma nova jogada
+        	  while (vel[l][c] != null){
+                  System.out.println("Posição já ultilizada! Tente outra jogada:");
+                  l = input.nextInt();
+                  c = input.nextInt();
+              }
+          }
+          // Se a posição não tiver sido preenchida, a mesma é preenchida com [X]
+          else{
+              vel[l][c] = "X";
+          }
+          // Condições para verificar se ouve ganhador na primeira linha
+          if ((vel[0][0] == vel[0][1]) && (vel[0][2]== vel[0][0]) && (vel[0][0] != null)){
+             //Casa haja vencedor verifica se é X ou O
+        	  if(vel[0][0] =="X"){
+                 // se for [X] ele armazena o nome do Jogador no g=n1
+        		  g = n1;
+              }
+              else{
+                  g = n2;
+              }
+             //Anuncia que o g + o nome do jagador ganhou, e imprime a tabela
+        	  System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                //se ouver vencedor soma 1 e termina o while
+                cont++;
+                
+            }
+            break;
+          }
+        else if ((vel[1][0] == vel[1][1]) && (vel[1][2]== vel[1][1]) && (vel[1][0] != null)){
+          if(vel[1][0] == "X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+                
+            }
+            break;
+          }
+        
+        else if ((vel[2][0] == vel[2][1]) && (vel[2][2]== vel[2][1]) && (vel[2][0] != null)){
+          if(vel[2][0] =="X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+                
+            }
+            break;
+          }
+        else if ((vel[0][0] == vel[1][1]) && (vel[2][2]== vel[1][1]) && (vel[0][0] != null)){
+          if(vel[1][1] =="X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+                
+            }
+            break;
+          }
+        else if ((vel[0][2] == vel[1][1]) && (vel[2][0]== vel[1][1]) && (vel[0][2] != null)){
+          if(vel[1][1] =="X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+                
+            }
+            break;
+          }
+          
+        else if ((vel[0][0] == vel[1][0]) && (vel[2][0]== vel[0][0]) && (vel[0][0] != null)){
+              if(vel[0][0] =="X"){
+                  g = n1;
+              }
+              else{
+                  g = n2;
+              }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+                
+            }
+            break;
+          }
+        else if ((vel[0][1] == vel[1][1]) && (vel[2][1]== vel[1][1]) && (vel[0][1] != null)){
+          if(vel[1][0] == "X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+                
+            }
+            break;
+          }
+        
+        else if ((vel[0][2] == vel[1][2]) && (vel[2][2]== vel[0][2]) && (vel[0][2] != null)){
+          if(vel[2][0] =="X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+                
+            }
+            break;
+          }
+          te++;
+          
+          if(te == 9){
+              if (vel[l][c] == null) {
+                for ( l = 0; l < vel.length; l++) {
+                    System.out.print(l+" + + -> ");
+                    for (c = 0; c < vel.length; c++) {
+                        
+                        System.out.print(c+" | ");
+                    }
+                    System.out.println();
+                }
+            }
+            else{
+                for (l = 0; l < vel.length; l++) {
+                    System.out.print(l+" + + -> ");
+                    for (c = 0; c < vel.length; c++) {
+                        
+                        if(vel[l][c] != null){
+                            aux = vel[l][c];
+                            System.out.print(aux+" | ");
+                        }
+                        else{
+                            System.out.print(c+" | ");
+                        }
+                    }
+                    System.out.println();
+                }
+            }
+              System.out.println("Empate!");
+              
+                  break;  
+              
+              
+          }
+          
+          
+          
+          System.out.println(n2+", escolha a posição de sua jogada:");
+          if (vel[l][c] == null) {
+              for ( l = 0; l < vel.length; l++) {
+                  System.out.print(l+" + + -> ");
+                  for (c = 0; c < vel.length; c++) {
+                      
+                    System.out.print(c+" | ");
+                }
+                  System.out.println();
+            }
+          }
+          else{
+              for (l = 0; l < vel.length; l++) {
+                  System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+            }
+          }
+          
+          l = input.nextInt();
+          c = input.nextInt();
+          
+          if(vel[l][c] != null){
+              while (vel[l][c] != null){
+                  System.out.println("Posição já ultilizada! Tente outra jogada:");
+                  l = input.nextInt();
+                  c = input.nextInt();
+              }
+          }
+          else{
+              vel[l][c] = "O";
+              
+          }
+          
+          if ((vel[0][0] == vel[0][1]) && (vel[0][2]== vel[0][0]) && (vel[0][0] != null)){
+              if(vel[0][0] =="X"){
+                  g = n1;
+              }
+              else{
+                  g = n2;
+              }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+            }
+            break;
+          }
+        else if ((vel[1][0] == vel[1][1]) && (vel[1][2]== vel[1][1]) && (vel[1][0] != null)){
+          if(vel[1][0] == "X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+            }
+            break;
+          }
+        
+        else if ((vel[2][0] == vel[2][1]) && (vel[2][2]== vel[2][1]) && (vel[2][0] != null)){
+          if(vel[2][0] =="X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+            }
+            
+          }
+        else if ((vel[0][0] == vel[1][1]) && (vel[2][2]== vel[1][1]) && (vel[0][0] != null)){
+          if(vel[1][1] =="X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+            }
+            break;
+          }
+        else if ((vel[0][2] == vel[1][1]) && (vel[2][0]== vel[1][1]) && (vel[0][2] != null)){
+          if(vel[1][1] =="X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+            }
+            break;
+          }
+          
+        else if ((vel[0][0] == vel[1][0]) && (vel[2][0]== vel[0][0]) && (vel[0][0] != null)){
+              if(vel[0][0] =="X"){
+                  g = n1;
+              }
+              else{
+                  g = n2;
+              }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+            }
+            
+          }
+        else if ((vel[0][1] == vel[1][1]) && (vel[2][1]== vel[1][1]) && (vel[0][1] != null)){
+          if(vel[1][0] == "X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+            }
+            break;
+          }
+        
+        else if ((vel[0][2] == vel[1][2]) && (vel[2][2]== vel[0][2]) && (vel[0][2] != null)){
+          if(vel[2][0] =="X"){
+              g = n1;
+          }
+          else{
+              g = n2;
+          }
+              System.out.println(" Parabéns " + g + ", você ganhou!");
+            for (l = 0; l < vel.length; l++) {
+              System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+                cont++;
+            }
+            break;
+          }
+          //faz a soma das jogadas, chegando a soma de 8 sem ganhador ele define um empate
+          te++;
+       
+      if(te == 9){
+          if (vel[l][c] == null) {
+            for ( l = 0; l < vel.length; l++) {
+                System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    System.out.print(c+" | ");
+                }
+                System.out.println();
+            }
+        }
+        else{
+            for (l = 0; l < vel.length; l++) {
+                System.out.print(l+" + + -> ");
+                for (c = 0; c < vel.length; c++) {
+                    
+                    if(vel[l][c] != null){
+                        aux = vel[l][c];
+                        System.out.print(aux+" | ");
+                    }
+                    else{
+                        System.out.print(c+" | ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+          System.out.println("Empate!");
+          
+              break;  
+          
+          
+      }
+      
+          
+          
+      }
+     
+   
+    }
+ 
+}
